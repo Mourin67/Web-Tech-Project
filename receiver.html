@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <h3>Blood Bank System</h3>
+        <div class="nav-links">
+            <a href="#" class="active">Dashboard</a>
+            <a href="#searchBloodForm">Search Blood</a>
+            <a href="#requestTable">My Requests</a>
+            <a href="#requestTable">Request History</a>
+            <a href="#" id="receiverLogout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-heading">
+            <h2>Receiver Dashboard</h2>
+            <p id="receiverWelcome">Welcome, Receiver! Find the blood you need.</p>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card">
+                <h4>ACTIVE REQUESTS</h4>
+                <h2 id="activeRequestsCount">0</h2>
+            </div>
+            <div class="summary-card">
+                <h4>COMPLETED REQUESTS</h4>
+                <h2 id="completedRequestsCount">0</h2>
+            </div>
+            <div class="summary-card">
+                <h4>PENDING APPROVAL</h4>
+                <h2 id="pendingRequestsCount">0</h2>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="left-section">
+                <div class="search-blood-box">
+                    <h3>Search Available Blood Stock</h3>
+                    <form id="searchBloodForm">
+                        <div class="search-fields">
+                            <div class="form-group">
+                                <label for="bloodGroup">Blood Group Required</label>
+                                <select id="bloodGroup" name="bloodGroup" required>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="unitsNeeded">Units Needed</label>
+                                <input type="number" id="unitsNeeded" name="unitsNeeded" min="1" value="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="urgencyLevel">Urgency Level</label>
+                                <select id="urgencyLevel" name="urgencyLevel">
+                                    <option value="Urgent">Urgent</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Emergency">Emergency</option>
+                                </select>
+                            </div>
+                            <button type="submit">Search Stock</button>
+                        </div>
+                    </form>
+
+                    <div class="search-results">
+                        <h4>Search Results:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Blood Type</th>
+                                    <th>Units Available</th>
+                                    <th>Blood Bank Location</th>
+                                </tr>
+                            </thead>
+                            <tbody id="searchResultsTable">
+                                <tr><td colspan="3">Search for a blood group to see demo stock.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="current-requests">
+                    <h3>My Current Blood Requests</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Blood Type</th>
+                                <th>Units</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestTable">
+                            <tr><td colspan="5">No requests submitted yet.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="request-blood-box">
+                    <h3>Request Blood (New Entry)</h3>
+                    <form id="requestBloodForm">
+                        <div class="form-group">
+                            <label for="requiredBloodType">Required Blood Type</label>
+                            <select id="requiredBloodType" name="requiredBloodType" required>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="requiredUnits">Units Required</label>
+                            <input type="number" id="requiredUnits" name="requiredUnits" min="1" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hospitalName">Hospital / Facility Name (if applicable)</label>
+                            <input type="text" id="hospitalName" name="hospitalName" placeholder="Enter hospital or facility name">
+                        </div>
+                        <div class="form-group">
+                            <label for="reason">Reason for Request / Notes</label>
+                            <textarea id="reason" name="reason" rows="3" placeholder="Type emergency notes or specific patient details here..."></textarea>
+                        </div>
+                        <button type="submit">Submit Request</button>
+                    </form>
+                    <p id="requestMessage" role="status"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
